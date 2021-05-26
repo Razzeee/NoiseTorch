@@ -1,2 +1,4 @@
 bin/
 licenses.go
+.flatpak-builder
+build-dir

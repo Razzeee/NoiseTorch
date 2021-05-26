@@ -1,0 +1,26 @@
+app-id: com.github.noisetorch
+runtime: org.freedesktop.Platform
+runtime-version: "20.08"
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+command: noisetorch
+finish-args:
+  - --socket=pulseaudio
+  - --filesystem=home
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+modules:
+  - name: NoiseTorch
+    buildsystem: simple
+    build-commands:
+      - make
+      - install -D bin/noisetorch /app/bin/noisetorch
+    build-options:
+      append-path: /usr/lib/sdk/golang/bin
+    sources:
+      - type: git
+        url: https://github.com/lawl/NoiseTorch.git
+        tag: 0.11.2
+        commit: c2bfe0202f5c58e35700925f6bbf5bafe613d509
